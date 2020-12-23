@@ -1,17 +1,44 @@
 import React from 'react';
-import { ImageBackground, StyleSheet } from 'react-native';
+import { Image, ImageBackground, StyleSheet, Text, View } from 'react-native';
 import backGroundImg from '../assets/background.jpg';
+import redLogo from '../assets/logo-red.png';
 
 function WelcomeScreen(props) {
   return (
     <>
-      <ImageBackground style={styles.background} source={backGroundImg} />
+      <ImageBackground style={styles.background} source={backGroundImg}>
+        <View style={styles.logoContainer}>
+          <Image style={styles.logo} source={redLogo} />
+          <Text> Swap, Swipe and Save </Text>
+        </View>
+        <View style={styles.loginButton} />
+        <View style={styles.registerButton} />
+      </ImageBackground>
     </>
   );
 }
 const styles = StyleSheet.create({
   background: {
     flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  loginButton: {
+    width: '100%',
+    height: 70,
+    backgroundColor: '#fc5c65',
+  },
+  registerButton: {
+    width: '100%',
+    height: 70,
+    backgroundColor: '#4ecdc4',
+  },
+  logo: { width: 100, height: 100 },
+  logoContainer: {
+    position: 'absolute',
+    top: 70,
+    alignItems: 'center',
   },
 });
+
 export default WelcomeScreen;
