@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
-import chairImg from '../assets/chair.jpg';
+import chairImg from '../../assets/chair.jpg';
 
 import colors from '../config/colors';
 
