@@ -1,8 +1,8 @@
 import React from 'react';
 import { Image, ImageBackground, StyleSheet, Text, View } from 'react-native';
-import backGroundImg from '../../assets/background.jpg';
-import redLogo from '../../assets/logo-red.png';
-import AppButton from '../AppButton';
+import backGroundImg from '../assets/background.jpg';
+import redLogo from '../assets/logo-red.png';
+import AppButton from '../componets/AppButton';
 
 function WelcomeScreen(props) {
   return (
