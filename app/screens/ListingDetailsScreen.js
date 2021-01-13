@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, View, StyleSheet } from 'react-native';
 import AppText from '../componets/AppText';
 import colors from '../config/colors';
-import ListItem from '../componets/ListItem';
+import ListItem from '../componets/lists/ListItem';
 import MoshFace from '../assets/mosh.jpg';
 
 function ListingDetailsScreen(props) {

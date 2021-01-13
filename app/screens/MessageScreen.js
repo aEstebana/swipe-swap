@@ -3,10 +3,10 @@ import { FlatList, StyleSheet, View } from 'react-native';
 
 import MoshFace from '../assets/mosh.jpg';
 
-import ListItemSeparator from '../componets/ListItemSeparator';
+import ListItemSeparator from '../componets/lists/ListItemSeparator';
 import Screen from '../componets/Screen';
-import ListItem from '../componets/ListItem';
-import ListemItemDeleteAction from '../componets/ListemItemDeleteAction';
+import ListItem from '../componets/lists/ListItem';
+import ListemItemDeleteAction from '../componets/lists/ListemItemDeleteAction';
 
 const initialMessages = [
   {

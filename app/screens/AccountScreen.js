@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
-import ListItem from '../componets/ListItem';
+import ListItem from '../componets/lists/ListItem';
 import Screen from '../componets/Screen';
 import moshFace from '../assets/mosh.jpg';
 import colors from '../config/colors';
 import Icon from '../componets/Icon';
-import ListItemSeparator from '../componets/ListItemSeparator';
+import ListItemSeparator from '../componets/lists/ListItemSeparator';
 
 const menuItems = [
   {
