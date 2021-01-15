@@ -23,8 +23,9 @@ const initialMessages = [
   },
   {
     id: 3,
-    title: 'T3',
-    descrption: 'D3',
+    title: 'T3ewffffffffffffffdsfffdsfffffffffffffffffffffff',
+    descrption:
+      'Dsdfffffffffffffdsfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff3',
     image: MoshFace,
   },
 ];
