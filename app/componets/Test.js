@@ -4,7 +4,7 @@ import { View, StyleSheet } from 'react-native';
 function Test(props) {
   return (
     <View style={styles.container}>
-      <></>
+      <> </>
     </View>
   );
 }
