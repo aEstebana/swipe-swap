@@ -4,7 +4,7 @@ import backGroundImg from '../assets/background.jpg';
 import redLogo from '../assets/logo-red.png';
 import AppButton from '../componets/AppButton';
 
-function WelcomeScreen(props) {
+function WelcomeScreen({ navigation }) {
   return (
     <>
       <ImageBackground
@@ -17,8 +17,15 @@ function WelcomeScreen(props) {
           <Text style={styles.tagline}> Swap, Swipe and Save </Text>
         </View>
         <View style={styles.buttonConatiner}>
-          <AppButton title="Login" />
-          <AppButton title="Register" color="secondary" />
+          <AppButton
+            title="Login"
+            onPress={() => navigation.navigate('Login')}
+          />
+          <AppButton
+            title="Register"
+            color="secondary"
+            onPress={() => navigation.navigate('register')}
+          />
         </View>
       </ImageBackground>
     </>
