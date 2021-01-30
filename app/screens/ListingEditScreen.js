@@ -11,12 +11,13 @@ import CategoryPickerItem from '../componets/CategoryPickerItem';
 import Screen from '../componets/Screen';
 import AppFormImagePicker from '../componets/forms/AppFormImagePicker';
 import useLocation from '../hooks/useLocation';
+import listingsApi from '../api/listings';
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label('Title'),
   price: Yup.number().required().min(1).max(1000).label('Price'),
-  description: Yup.string().label('Description'),
-  category: Yup.object().required().nullable().label('Category'),
+  description: Yup.string().label('description'),
+  category: Yup.object().required().nullable().label('category'),
   images: Yup.array().min(1, 'please select at least one image'),
 });
 
@@ -64,6 +65,12 @@ const categories = [
 ];
 function ListingEditScreen() {
   const location = useLocation();
+
+  const handleSumbit = async (listing) => {
+    const result = await listingsApi.addListing({ ...listing, location });
+    if (!result.ok) return alert('count not post listing');
+    alert('succes');
+  };
   return (
     <Screen style={styles.container}>
       <AppForm
@@ -74,7 +81,7 @@ function ListingEditScreen() {
           category: null,
           images: [],
         }}
-        onSubmit={(values) => console.log(location)}
+        onSubmit={handleSumbit}
         validationSchema={validationSchema}
       >
         <AppFormImagePicker name="images" />
@@ -90,7 +97,7 @@ function ListingEditScreen() {
           items={categories}
           name="category"
           numberOfColumns={3}
-          // PickerItemComponent={CategoryPickerItem}
+          PickerItemComponent={CategoryPickerItem}
           placeholder="Category"
           width="50%"
         />
@@ -99,7 +106,7 @@ function ListingEditScreen() {
           multiline
           name="description"
           numberOfLines={3}
-          placeholder="Description"
+          placeholder="description"
         />
         <SubmitButton title="Post" />
       </AppForm>

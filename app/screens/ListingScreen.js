@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
+
 import useApi from '../hooks/useApi';
 import ActivityIndicator from '../componets/ActivityIndicator';
 import Card from '../componets/Card';
@@ -9,26 +10,26 @@ import Screen from '../componets/Screen';
 import colors from '../config/colors';
 import routes from '../navigation/routes';
 import AppText from '../componets/AppText';
+// import listings from '../api/listings';
 
 function ListingScreen({ navigation }) {
-  const { data: listings, error, loading, request: loadListings } = useApi(
-    listingsApi.getListings
-  );
+  const getListingsApi = useApi(listingsApi.getListings);
+
   useEffect(() => {
-    loadListings();
+    getListingsApi.request();
   }, []);
 
   return (
     <Screen style={styles.screen}>
-      {error && (
+      {getListingsApi.error && (
         <>
-          <AppText> couldnt retrive listing 404 erro </AppText>
-          <Button title="Retry" onPress={loadListings} />
+          <AppText>Couldn't retrieve the listings.</AppText>
+          <Button title="Retry" onPress={getListingsApi.request} />
         </>
       )}
-      <ActivityIndicator visible />
+      <ActivityIndicator visible={getListingsApi.loading} />
       <FlatList
-        data={listings}
+        data={getListingsApi.data}
         keyExtractor={(listing) => listing.id.toString()}
         renderItem={({ item }) => (
           <Card
