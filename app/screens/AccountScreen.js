@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import ListItem from '../componets/lists/ListItem';
@@ -7,6 +7,7 @@ import moshFace from '../assets/mosh.jpg';
 import colors from '../config/colors';
 import Icon from '../componets/Icon';
 import ListItemSeparator from '../componets/lists/ListItemSeparator';
+import AuthContext from '../auth/context';
 
 const menuItems = [
   {
@@ -26,14 +27,11 @@ const menuItems = [
   },
 ];
 function AccountScreen({ navigation }) {
+  const { user } = useContext(AuthContext);
   return (
     <Screen style={styles.screen}>
       <View style={styles.container}>
-        <ListItem
-          title="Esteban Acevedo"
-          subTitle="EstebanAcevedo.dev@gmail.com"
-          image={moshFace}
-        />
+        <ListItem title={user.name} subTitle={user.email} image={moshFace} />
       </View>
       <View style={styles.container}>
         <FlatList
