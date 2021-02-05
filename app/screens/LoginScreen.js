@@ -12,6 +12,7 @@ import {
 } from '../componets/forms';
 import authApi from '../api/auth';
 import AuthContext from '../auth/context';
+import storage from '../auth/storage';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label('Email'),
@@ -28,7 +29,7 @@ function LoginScreen() {
     setLoginFailed(false);
     const user = jwtDecode(result.data);
     authContext.setUser(user);
-    console.log(user);
+    storage.storeToken(result.data);
   };
   return (
     <Screen style={styles.container}>
@@ -65,17 +66,5 @@ function LoginScreen() {
     </Screen>
   );
 }
-const styles = StyleSheet.create({
-  container: {
-    padding: 10,
-  },
-  logo: {
-    width: 80,
-    height: 80,
-    alignSelf: 'center',
-    marginTop: 50,
-    marginBottom: 20,
-  },
-});
 
 export default LoginScreen;
