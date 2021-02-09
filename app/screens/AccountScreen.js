@@ -1,14 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
+
 import ListItem from '../componets/lists/ListItem';
 import Screen from '../componets/Screen';
 import moshFace from '../assets/mosh.jpg';
 import colors from '../config/colors';
 import Icon from '../componets/Icon';
 import ListItemSeparator from '../componets/lists/ListItemSeparator';
-import AuthContext from '../auth/context';
-import AuthStorage from '../auth/storage';
+import useAuth from '../auth/useAuth';
 
 const menuItems = [
   {
@@ -28,11 +28,8 @@ const menuItems = [
   },
 ];
 function AccountScreen({ navigation }) {
-  const { user, setUser } = useContext(AuthContext);
-  const handleLogout = () => {
-    setUser(null);
-    AuthStorage.removeToken();
-  };
+  const { user, logOut } = useAuth();
+
   return (
     <Screen style={styles.screen}>
       <View style={styles.container}>
@@ -60,7 +57,7 @@ function AccountScreen({ navigation }) {
       <ListItem
         title="Log Out"
         IconComponent={<Icon name="logout" backgroundColor="#ffe66d" />}
-        onPress={handleLogout}
+        onPress={() => logOut()}
       />
     </Screen>
   );

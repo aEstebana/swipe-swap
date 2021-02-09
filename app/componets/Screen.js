@@ -1,4 +1,4 @@
-import React, { Children } from 'react';
+import React from 'react';
 import Constants from 'expo-constants';
 
 import { SafeAreaView, StyleSheet, View } from 'react-native';
