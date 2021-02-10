@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import AppLoading from 'expo-app-loading';
+
 import navigationTheme from './app/navigation/navigationTheme';
 import OfflineNotice from './app/componets/OfflineNotice';
 import AuthNavigator from './app/navigation/AuthNavigator';
+//
 import AuthContext from './app/auth/context';
+//
 import AppNavigator from './app/navigation/AppNavigator';
+//
 import authStorage from './app/auth/storage';
 
 export default function App() {
@@ -13,7 +17,7 @@ export default function App() {
   const [isReady, setIsReady] = useState(false);
   const restoreToken = async () => {
     const token = authStorage.getUser();
-    if (token) return setUser(token);
+    if (token) setUser(token);
   };
   if (!isReady)
     return (

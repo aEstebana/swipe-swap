@@ -5,21 +5,16 @@ const useApi = (apiFunc) => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const request = async (...args) => {
+  const request = async (...props) => {
     setLoading(true);
-    const response = await apiFunc(...args);
+    const response = await apiFunc(...props);
     setLoading(false);
 
     setError(!response.ok);
     setData(response.data);
-
     return response;
   };
-  return {
-    request,
-    data,
-    error,
-    loading,
-  };
+
+  return { data, error, loading, request };
 };
 export default useApi;

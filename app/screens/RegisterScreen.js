@@ -6,14 +6,14 @@ import Screen from '../componets/Screen';
 import usersApi from '../api/users';
 import authApi from '../api/auth';
 import useAuth from '../auth/useAuth';
-import useApi from '../hooks/useApi';
-import ActivityIndicator from '../componets/ActivityIndicator';
 import {
   AppForm,
   AppFormField,
   SubmitButton,
   ErrorMessage,
 } from '../componets/forms';
+import useApi from '../hooks/useApi';
+import ActivityIndicator from '../componets/ActivityIndicator';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().label('Name'),
@@ -24,6 +24,7 @@ const validationSchema = Yup.object().shape({
 function RegisterScreen() {
   const registerApi = useApi(usersApi.register);
   const loginApi = useApi(authApi.login);
+
   const auth = useAuth();
   const [error, setError] = useState();
 
@@ -33,9 +34,10 @@ function RegisterScreen() {
     if (!result.ok) {
       if (result.data) setError(result.data.error);
       else {
-        setError('an unexpect error occurred');
+        setError('An unexpected error occurred.');
         console.log(result);
       }
+      return;
     }
 
     const { data: authToken } = await loginApi.request(
