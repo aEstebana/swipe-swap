@@ -13,7 +13,6 @@ import AppText from '../componets/AppText';
 
 function ListingsScreen({ navigation }) {
   const getListingsApi = useApi(listingsApi.getListings);
-
   useEffect(() => {
     getListingsApi.request();
   }, []);

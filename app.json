@@ -28,6 +28,9 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": "online market place to sell or exchange items you no longer need\n "
+    "description": "online market place to sell or exchange items you no longer need\n ",
+    "notification": {
+      "iosDisplayInForeground": true
+    }
   }
 }
