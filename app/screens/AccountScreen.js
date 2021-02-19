@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
+import { StyleSheet, View, FlatList } from 'react-native';
 
 import ListItem from '../componets/lists/ListItem';
 import Screen from '../componets/Screen';

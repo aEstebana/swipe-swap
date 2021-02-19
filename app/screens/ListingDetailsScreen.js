@@ -2,7 +2,6 @@ import React from 'react';
 import { View, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native';
 import { Image } from 'react-native-expo-image-cache';
 
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import AppText from '../componets/AppText';
 import colors from '../config/colors';
 import ListItem from '../componets/lists/ListItem';

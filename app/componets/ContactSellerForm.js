@@ -2,17 +2,21 @@ import React from 'react';
 import { Alert, KeyBoard } from 'react-native';
 import * as Notifications from 'expo-notifications';
 import * as Yup from 'yup';
+
 import { AppForm, AppFormField, SubmitButton } from './forms';
 import messagesApi from '../api/messages';
 
 function ContactSellerForm({ listing }) {
   const handleSubmit = async ({ message }, { resetForm }) => {
     KeyBoard.dismiss();
+
     const result = await messagesApi.send(message, listing.id);
+
     if (!result.ok) {
       console.log('Error', result);
       return Alert.alert('error', 'could not send the message to the server');
     }
+
     resetForm();
 
     Notifications.scheduleNotificationAsyn({
