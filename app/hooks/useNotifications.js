@@ -12,13 +12,13 @@ const useNotifications = (notificationListener) => {
       const token = await Notifications.getExpoPushTokenAsync();
       expoPushTokensApi.register(token);
     } catch (error) {
-      console.log(error);
+      console.log('Error getting a push token', error);
     }
   };
   useEffect(() => {
     registerForPushNotifications();
     if (notificationListener)
       Notifications.addPushTokenListener(notificationListener);
-  }, []);
+  }, [notificationListener]);
 };
 export default useNotifications;

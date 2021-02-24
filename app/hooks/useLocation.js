@@ -16,9 +16,11 @@ const useLocation = () => {
       console.log(error);
     }
   };
+
   useEffect(() => {
     getLocation();
   }, []);
+
   return location;
 };
 

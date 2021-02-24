@@ -11,8 +11,9 @@ import colors from '../config/colors';
 import routes from '../navigation/routes';
 import AppText from '../componets/AppText';
 
-function ListingScreen({ navigation }) {
+function ListingsScreen({ navigation }) {
   const getListingsApi = useApi(listingsApi.getListings);
+
   useEffect(() => {
     getListingsApi.request();
   }, []);
@@ -51,4 +52,4 @@ const styles = StyleSheet.create({
     backgroundColor: colors.lightGrey,
   },
 });
-export default ListingScreen;
+export default ListingsScreen;

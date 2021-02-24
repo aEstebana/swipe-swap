@@ -10,7 +10,6 @@ import {
   SubmitButton,
 } from '../componets/forms';
 import authApi from '../api/auth';
-
 import useAuth from '../auth/useAuth';
 
 const validationSchema = Yup.object().shape({
@@ -18,7 +17,7 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required().min(4).label('Password'),
 });
 
-function LoginScreen() {
+function LoginScreen(props) {
   const auth = useAuth();
   const [loginFailed, setLoginFailed] = useState(false);
 
@@ -38,7 +37,7 @@ function LoginScreen() {
         validationSchema={validationSchema}
       >
         <ErrorMessage
-          error="Invaild email and/or password"
+          error="Invalid email and/or password."
           visible={loginFailed}
         />
         <AppFormField
@@ -56,14 +55,15 @@ function LoginScreen() {
           icon="lock"
           name="password"
           placeholder="Password"
-          textContentType="password"
           secureTextEntry
+          textContentType="password"
         />
         <SubmitButton title="Login" />
       </AppForm>
     </Screen>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     padding: 10,
@@ -76,4 +76,5 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
 });
+
 export default LoginScreen;
